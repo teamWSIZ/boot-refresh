@@ -26,3 +26,6 @@ ORDER BY orderdate LIMIT 10000;
 -- niż 10000 rzędów; całość jest posortowana po kolumnie 'orderdate'
 
 
+--chcemy się dowiedzieć jakie typy produktów wystąpiły w zamówieniach 2013-11-22
+SELECT o.orderid, o.orderdate, od.productid from orders o, orderdetail od
+WHERE o.orderid = od.orderid AND o.orderdate='2013-11-22';
