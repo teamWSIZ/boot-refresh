@@ -1,0 +1,7 @@
+Wirtualizacja:
+
+https://www.virtualbox.org/wiki/Downloads
+
+ISO dla Fedora linux xfce:
+https://spins.fedoraproject.org/xfce/download/index.html
+
