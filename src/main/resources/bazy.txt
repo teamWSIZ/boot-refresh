@@ -1,0 +1,15 @@
+CREATE SCHEMA bbx;
+
+SET SEARCH_PATH to bbx; --zmiana domyślnego schematu
+
+
+
+SELECT * from customers;
+SELECT c.customername, c.address, c.city, c.country from customers c;
+
+SELECT * FROM customers WHERE country='Brazil';  --klienci z brazylii
+
+SELECT * from customers WHERE customername='Wolski';
+
+SELECT * FROM customers WHERE customername LIKE 'C%'; --klienci z nazwiskiem na literę C
+
