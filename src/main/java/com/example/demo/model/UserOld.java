@@ -9,17 +9,25 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+//@Entity
 @Data
-@Table(name = "user")
+//@Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserOld {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer uid;
-    String name;
-    String nickname;
+    Integer userid;
+    String username;
+
+    @Type(type = "date")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    Date birthdate;
     Boolean active;
+
+    @PrePersist
+    void defaultInit() {
+        if (active==null) active=true;
+    }
 
 }
