@@ -39,7 +39,8 @@ create table transfer(
 
 ALTER TABLE cash."crypto"
   ADD CONSTRAINT crypto_user_uid_fk
-FOREIGN KEY (uid) REFERENCES cash."user" (uid) ON DELETE CASCADE ON UPDATE CASCADE;
+FOREIGN KEY (uid) REFERENCES cash."user" (uid) 
+ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 
