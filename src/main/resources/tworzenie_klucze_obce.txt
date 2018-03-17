@@ -1,0 +1,19 @@
+-- na tabeli crypto uid musi odpowiadać istniejącemu user.uid
+ALTER TABLE cash.crypto
+  ADD CONSTRAINT crypto_uid_fk
+FOREIGN KEY (uid) REFERENCES cash.user (uid) ON DELETE CASCADE;
+
+-- na tabeli account uid musi odpowiadać istniejącemu user.uid
+ALTER TABLE cash.account
+  ADD CONSTRAINT account_user_uid_fk
+FOREIGN KEY (uid) REFERENCES cash.user (uid) ON DELETE CASCADE;
+
+-- na tabeli transfer aidfrom musi odpowiadać istniejącemu account.aid
+ALTER TABLE cash.transfer
+  ADD CONSTRAINT transfer_fromaid_fk
+FOREIGN KEY (aidfrom) REFERENCES cash.account (aid) ON DELETE CASCADE;
+
+-- na tabeli transfer aidto musi odpowiadać istniejącemu account.aid
+ALTER TABLE cash.transfer
+  ADD CONSTRAINT transfer_toaid_fk
+FOREIGN KEY (aidto) REFERENCES cash.account (aid) ON DELETE CASCADE;
