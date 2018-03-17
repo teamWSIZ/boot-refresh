@@ -1,0 +1,13 @@
+
+#tworzenie usera
+https://localhost:8443/create_user?name=Juncker&nickname=wolf
+
+#wszyscy userzy
+https://localhost:8443/show_users
+
+#user o id=2
+https://localhost:8443/users?uid=2
+
+#wszystkie hasła
+https://localhost:8443/passwords
+

@@ -7,15 +7,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "crypto")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Crypto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer cid;
     Integer uid;
-    String name;
-    String nickname;
-    Boolean active;
+    String hash;
 }

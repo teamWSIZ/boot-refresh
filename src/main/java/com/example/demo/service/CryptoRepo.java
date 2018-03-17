@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Crypto;
 import com.example.demo.model.User;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepo extends CrudRepository<User,Integer> {
-//    Iterable<User> findByNameStartingWith(String usernameprefix);
+public interface CryptoRepo extends CrudRepository<Crypto,Integer> {
 }
