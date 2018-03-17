@@ -1,0 +1,33 @@
+create SCHEMA ccash;
+set SEARCH_PATH to ccash;
+
+-- tworzenie tabeli usera z automatycznie generowanym polem uid
+CREATE TABLE ccash.user (
+  uid SERIAL PRIMARY KEY,
+  name text,
+  nickname text UNIQUE,
+  active BOOLEAN
+);
+
+INSERT INTO ccash.user(name, nickname, active) VALUES ('Tremor', 'Tre', true);
+
+CREATE TABLE ccash.crypto(
+  cid SERIAL PRIMARY KEY,
+  uid INTEGER,
+  hash text
+);
+
+CREATE table ccash.account(
+  aid SERIAL PRIMARY KEY,
+  name text,
+  balance INTEGER,
+  uid INTEGER
+);
+
+CREATE table transfer(
+  tid SERIAL PRIMARY KEY,
+  aidfrom INTEGER,
+  aidto INTEGER,
+  amount INTEGER,
+  timestamp TIMESTAMP
+);
