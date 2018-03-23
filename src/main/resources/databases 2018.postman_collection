@@ -1,0 +1,64 @@
+{
+	"variables": [],
+	"info": {
+		"name": "databases 2018",
+		"_postman_id": "ae7a1805-1f3f-eb63-7d72-aa9ed6cc84c4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8443/accounts/",
+			"request": {
+				"url": "https://localhost:8443/accounts/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/accounts/1",
+			"request": {
+				"url": "https://localhost:8443/accounts/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/accounts/",
+			"request": {
+				"url": "https://localhost:8443/accounts/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"aid\": null,\n    \"name\": \"Xi drugie\",\n    \"balance\": \"10\",\n    \"uid\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/accounts/2",
+			"request": {
+				"url": "https://localhost:8443/accounts/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
