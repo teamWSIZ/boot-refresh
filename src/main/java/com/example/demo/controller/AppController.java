@@ -37,6 +37,7 @@ public class AppController {
     @RequestMapping(value = "/show_users", method = GET)
     public Iterable<User> getUsers() {
         log.info("Client requests full list of users");
+        userRepo.count();
         return userRepo.findAll();
     }
 
@@ -45,6 +46,7 @@ public class AppController {
         return (new Date()).toString();
     }
 
+    //przykład użycia: https://localhost:8443/create_user?name=Abra&nickname=AA
     @RequestMapping(value = "/create_user", method = GET)
     public User createUser(@RequestParam(value = "name") String name,
                            @RequestParam(value = "nickname") String nickname) {
