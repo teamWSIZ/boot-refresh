@@ -1,0 +1,41 @@
+-- proszę stworzyć swój schemat, jeśli pracujemy na wspólnej bazie
+create SCHEMA egzamin;
+set SEARCH_PATH to egzamin;
+
+-- tworzenie tabeli usera z automatycznie generowanym polem uid
+CREATE TABLE egzamin.questiontype (
+  qtid SERIAL PRIMARY KEY,
+  description text
+);
+
+-- INSERT INTO egzamin.questiontype (description) VALUES ('Pytania ogólne');
+
+CREATE table test (
+  tid SERIAL PRIMARY KEY,
+  sid int,
+  album text,
+  start TIMESTAMP,
+  finish TIMESTAMP,
+  ip text,
+  avgscore DOUBLE PRECISION,
+  official BOOLEAN
+);
+
+CREATE table egzamin.question (
+  qid SERIAL PRIMARY KEY,
+  text text,
+  answer1 text,
+  answer2 text,
+  answer3 text,
+  correct INT,
+  typeid INT,
+  active BOOLEAN
+);
+
+CREATE table testquestion (
+  tqid SERIAL PRIMARY KEY,
+  tid INT,
+  qid INT,
+  clientanswerid INT,
+  score INT
+);
