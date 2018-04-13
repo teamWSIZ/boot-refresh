@@ -14,7 +14,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @CrossOrigin
 @RequestMapping(value = "/exam")
 @Slf4j
-public class AccountController {
+public class TestController {
 
     @Autowired
     TestRepo testRepo;
@@ -27,7 +27,7 @@ public class AccountController {
     }
 
 
-    @RequestMapping(value = "/", method = GET)
+    @RequestMapping(value = "", method = GET)
     public Iterable<Test> getAllTests() {
         return testRepo.findAll();
     }
