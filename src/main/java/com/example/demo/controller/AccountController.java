@@ -1,30 +1,25 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.model.Account;
-import com.example.demo.model.Crypto;
-import com.example.demo.model.User;
-import com.example.demo.service.AccountRepo;
-import com.example.demo.service.CryptoRepo;
-import com.example.demo.service.UserRepo;
+import com.example.demo.model.Test;
+import com.example.demo.service.QuestionRepo;
+import com.example.demo.service.TestRepo;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/accounts")
+@RequestMapping(value = "/exam")
 @Slf4j
 public class AccountController {
 
     @Autowired
-    AccountRepo accountRepo;
-
+    TestRepo testRepo;
+    @Autowired
+    QuestionRepo questionRepo;
 
     @RequestMapping(value = "/status")
     public String showStatus() {
@@ -33,29 +28,29 @@ public class AccountController {
 
 
     @RequestMapping(value = "/", method = GET)
-    public Iterable<Account> getAllAccounts() {
-        return accountRepo.findAll();
+    public Iterable<Test> getAllTests() {
+        return testRepo.findAll();
     }
 
-    @RequestMapping(value = "/{aid}", method = GET)
-    public Account getAccountById(@PathVariable Integer aid) {
-        return accountRepo.findOne(aid);
+    @RequestMapping(value = "/{tid}", method = GET)
+    public Test getTestById(@PathVariable Integer aid) {
+        return testRepo.findOne(aid);
     }
 
     @RequestMapping(value = "/", method = PUT)
-    public Account updateOrCreateAccount(@RequestBody Account account) {
-        if (account.getAid()==null) {
-            log.info("Creating account {}", account);
+    public Test updateOrCreateTest(@RequestBody Test test) {
+        if (test.getTid()==null) {
+            log.info("Creating test {}", test);
         } else {
-            log.info("Updating account {}", account);
+            log.info("Updating test {}", test);
         }
-        return accountRepo.save(account);
+        return testRepo.save(test);
     }
 
-    @RequestMapping(value = "/{aid}", method = DELETE)
-    public void deleteAccount(@PathVariable Integer aid) {
+    @RequestMapping(value = "/{tid}", method = DELETE)
+    public void deleteTest(@PathVariable Integer aid) {
         log.info("Removing account {}", aid);
-        accountRepo.delete(aid);
+        testRepo.delete(aid);
     }
 
 

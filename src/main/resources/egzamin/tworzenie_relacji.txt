@@ -6,3 +6,8 @@ FOREIGN KEY (typeid) REFERENCES questiontype (qtid) ON DELETE CASCADE;
 ALTER TABLE egzamin.testquestion
   ADD CONSTRAINT testquestion_qid__fk
 FOREIGN KEY (qid) REFERENCES question (qid) ON DELETE CASCADE;
+
+ALTER TABLE egzamin.testquestion
+  ADD CONSTRAINT testquestion_test_tid__fk
+FOREIGN KEY (tid) REFERENCES test (tid) ON DELETE CASCADE;
+
