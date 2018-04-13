@@ -1,0 +1,27 @@
+
+#Elementarna procedura backupu:
+- zalogowac na serwer DB (ssh, putty)
+- su postgres   (przejscie na usera postgres)
+- cd ~          (przejscie do foldera domowego)
+- pg_dump student --username student -n egzamin > bb.sql
+  (backupuje z bazy student, z logowaniem na usera student, ze schematu 'egzamin' do pliku bb.sql
+
+
+
+#Odtwarzanie
+psql nazwa_bazy < nazwa_pliku
+
+
+
+#Tworzenie bazy z psql:
+psql
+CREATE DATABASE student;
+GRANT ALL PRIVILAGES ON DATABASE student TO student;
+
+
+#Backup z innego hosta
+pg_dump --host <host> --port 5432 --username <user> --file <filename> --table <tablename> dbname
+
+
+#Bez informacji o właścicielu bazy/schematu:
+--no-owner
