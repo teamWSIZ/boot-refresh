@@ -1,0 +1,65 @@
+--CREATE SCHEMA aaa;
+--set SEARCH_PATH to aaa;
+
+create table logg (
+  id SERIAL PRIMARY KEY,
+  timestamp timestamp,
+  message text
+);
+
+create FUNCTION simple(x int)
+  RETURNS INTEGER as $$
+  begin
+    return x * x;
+  end; $$
+  LANGUAGE 'plpgsql';
+--execute it:
+select simple(10);
+
+CREATE or REPLACE FUNCTION logItSimple(x text)
+  RETURNS INTEGER as $$
+  begin
+    INSERT INTO logg(timestamp, message) VALUES (localtimestamp, x);
+    return 1;
+  end; $$
+  LANGUAGE 'plpgsql';
+
+--time functions: https://www.postgresql.org/docs/8.2/static/functions-datetime.html
+select localtimestamp;
+SELECT logitsimple('Abra kadabra');
+
+------------------------------------------
+-- triggers
+
+CREATE or REPLACE FUNCTION simpletrigger()
+  RETURNS trigger as $$
+begin
+  INSERT INTO aaa.logg(timestamp, message) VALUES (localtimestamp,
+                                                   'Changing user name from ' || OLD.name || ' to ' || NEW.name);
+  return NEW;
+end; $$
+LANGUAGE 'plpgsql';
+
+-- operacje na napisach: https://www.postgresql.org/docs/9.1/static/functions-string.html
+
+
+-----------------
+CREATE TABLE userr (
+  id SERIAL PRIMARY KEY,
+  name text
+);
+
+drop trigger tr1 on userr;
+
+CREATE trigger tr1
+  BEFORE UPDATE ON aaa.userr
+  for EACH row EXECUTE PROCEDURE simpletrigger();
+
+INSERT INTO userr(name) VALUES ('xiao');
+
+
+--wiecej:
+--http://www.postgresqltutorial.com/creating-first-trigger-postgresql/
+--http://www.postgresqltutorial.com/postgresql-create-function/
+--http://www.postgresonline.com/journal/archives/58-Quick-Guide-to-writing-PLPGSQL-Functions-Part-1.html
+--https://www.linuxtopia.org/online_books/database_guides/Practical_PostgreSQL_database/PostgreSQL_x20238_004.htm
