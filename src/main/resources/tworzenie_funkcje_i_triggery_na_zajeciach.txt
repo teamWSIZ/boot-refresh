@@ -1,0 +1,94 @@
+CREATE SCHEMA aaa;
+set SEARCH_PATH to aaa;
+
+
+
+create FUNCTION simple(x int)
+  RETURNS INTEGER as $xxx$
+begin
+  return x * x;
+end;
+$xxx$
+LANGUAGE 'plpgsql';
+
+--execute it:
+select simple(12);
+-----------------------------------
+
+create table logg (
+  id SERIAL PRIMARY KEY,
+  timestamp timestamp,
+  message text
+);
+
+CREATE TABLE userr (
+  id SERIAL PRIMARY KEY,
+  name text
+);
+
+-------------------------------------
+
+INSERT INTO logg(timestamp, message) VALUES (now(), 'Abra kadabra');
+
+CREATE or REPLACE FUNCTION logujemy(x text)
+  RETURNS INTEGER as $$
+DECLARE
+  uuu text;
+begin
+  SELECT into uuu user;   --nazwa usera przekazana do zmiennej uuu
+  INSERT INTO logg(timestamp, message) VALUES (now(), uuu || ' ' || x); --logujemy tez nazwe usera
+  return 1;
+end; $$
+LANGUAGE 'plpgsql';
+
+SELECT logujemy('Deus vult!!');
+select user;
+
+-------------------------------------
+
+CREATE or REPLACE FUNCTION simpletrigger()
+  RETURNS trigger as $$
+begin
+  INSERT INTO aaa.logg(timestamp, message)
+    VALUES (localtimestamp, 'Wykonano zmianę nazwy usera');
+  return NEW;
+end; $$
+LANGUAGE 'plpgsql';
+
+CREATE or REPLACE FUNCTION medium_difficulty_trigger()
+  RETURNS trigger as $$
+begin
+  INSERT INTO aaa.logg(timestamp, message)
+  VALUES (localtimestamp, 'Zmiana nazwy usera: old:' || OLD.name || ' new:' || NEW.name);
+  return NEW;
+end; $$
+LANGUAGE 'plpgsql';
+
+CREATE or REPLACE FUNCTION simple_after_trigger()
+  RETURNS trigger as $$
+begin
+  INSERT INTO aaa.logg(timestamp, message)
+  VALUES (localtimestamp, 'Zmiana nazwy usera na ' || NEW.name || ' zakończona sukcesem');
+  return NEW;
+end; $$
+LANGUAGE 'plpgsql';
+
+
+
+
+CREATE trigger prosty
+  BEFORE UPDATE ON aaa.userr
+  for EACH row EXECUTE PROCEDURE simpletrigger();
+
+CREATE trigger lepszy
+  BEFORE UPDATE ON aaa.userr
+  for EACH row EXECUTE PROCEDURE medium_difficulty_trigger();
+
+CREATE trigger poupdatecie
+  AFTER UPDATE ON aaa.userr
+  for EACH row EXECUTE PROCEDURE simple_after_trigger();
+
+
+
+
+
