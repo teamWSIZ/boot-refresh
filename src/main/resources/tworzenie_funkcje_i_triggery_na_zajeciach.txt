@@ -58,8 +58,10 @@ LANGUAGE 'plpgsql';
 CREATE or REPLACE FUNCTION medium_difficulty_trigger()
   RETURNS trigger as $$
 begin
-  INSERT INTO aaa.logg(timestamp, message)
-  VALUES (localtimestamp, 'Zmiana nazwy usera: old:' || OLD.name || ' new:' || NEW.name);
+  IF OLD.name != NEW.name THEN
+    INSERT INTO aaa.logg(timestamp, message)
+      VALUES (localtimestamp, 'Zmiana nazwy usera: old:' || OLD.name || ' new:' || NEW.name);
+  END IF;
   return NEW;
 end; $$
 LANGUAGE 'plpgsql';
