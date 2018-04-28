@@ -2,14 +2,15 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.Question;
-import com.example.demo.model.Test;
 import com.example.demo.service.QuestionRepo;
-import com.example.demo.service.TestRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @CrossOrigin
@@ -38,13 +39,5 @@ public class QuestionController {
 
         return questionRepo.save(nowe);
     }
-
-    //
-//    @RequestMapping(value = "/{tid}", method = GET)
-//    public Test getTestById(@PathVariable Integer aid) {
-//
-//        return testRepo.findOne(aid);
-//    }
-
 
 }
