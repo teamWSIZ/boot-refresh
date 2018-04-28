@@ -7,6 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Pojedyncze pytanie zadane w czasie konkretnego testu o id "tid",
+ * rodzaj pytania to "qid", wraz z odpowiedzią klienta "clientAnswerId".
+ */
+
+
+
 @Entity
 @Table(name = "testquestion")
 @Data

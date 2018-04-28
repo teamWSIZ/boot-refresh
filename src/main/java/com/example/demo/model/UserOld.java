@@ -9,6 +9,10 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Do wywalenia
+ */
+
 //@Entity
 @Data
 //@Table(name = "users")

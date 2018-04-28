@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Rodzaje (typy) pytań, np. pytania do egzaminu dyplomowego, pytania
+ * z jakiegoś przedmiotu etc.
+ */
+
 @Entity
 @Table(name = "questiontype")
 @Data
