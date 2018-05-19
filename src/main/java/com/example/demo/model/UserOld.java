@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Do wywalenia
+ * Do wywalenia; ważne tylko ze względu na sposób traktowania daty
  */
 
 //@Entity

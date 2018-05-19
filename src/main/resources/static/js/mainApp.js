@@ -25,24 +25,5 @@ app.run(function ($rootScope) {
 
     $rootScope.M = {};
     //Global properties
-    $rootScope.M.URL = 'https://localhost:8444';
-
-    // Globalnie-dostępna tablica
-    $rootScope.users = [];
-});
-
-//Dyrektywa do zaczepienia
-//https://stackoverflow.com/questions/17922557/angularjs-how-to-check-for-changes-in-file-input-fields
-app.directive('customOnChange', function() {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var onChangeHandler = scope.$eval(attrs.customOnChange);
-            element.on('change', onChangeHandler);
-            element.on('$destroy', function() {
-                element.off();
-            });
-
-        }
-    };
+    $rootScope.M.URL = 'http://localhost:8888';
 });

@@ -21,7 +21,7 @@ CREATE table test (
   official BOOLEAN
 );
 
-CREATE table egzamin.question (
+CREATE table question (
   qid SERIAL PRIMARY KEY,
   text text,
   answer1 text,

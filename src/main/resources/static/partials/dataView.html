@@ -1,100 +1,60 @@
-<div class="col-sm-4">
-    <div class="panel panel-primary" >
 
-        <h3 class="panel-heading panel-title">
-            Praca z danymi
-        </h3>
-
-        <div class="panel-body" >
-            <div style="margin-bottom: 20px" class="debug" >
-                <input ng-model="newItem.title" class="iinput narrow8" placeholder="Title">
-                <input ng-model="newItem.body" class="iinput narrow8" placeholder="Body">
-            </div>
-
-            <div class="debug">
-                <button class="btn btn-primary" ng-click="loadArray()">Load data</button>
-                <button class="btn btn-default" ng-click="sendNewItem()">Send data</button>
-                <button class="btn btn-default" ng-click="loadUsers()">Load users</button>
-            </div>
-        </div>
-
-        <div class="panel-footer">
-            (footer)
-        </div>
-    </div>
-    <div class="panel panel-primary" >
-
-        <h3 class="panel-heading panel-title">
-            Filesystem
-        </h3>
-
-        <div class="panel-body" >
-
-            <div class="debug">
-                <button class="btn btn-primary" ng-click="listFiles(current_path)">List files</button>
-                <br>
-                <input type="file" custom-on-change="uploadFile">
-                <br>
-                <input type="text" ng-model="M.selected_filename"/>
-                <a ng-href="{{$rootScope.M.URL + '/files/download?path=' + M.selected_filename}}" target="_blank">download</a>
-
-                <br>
-                ----
-
-
-            </div>
-        </div>
-
-        <div class="panel-footer">
-            <table class="table table-bordered table-responsive table-condensed table-striped">
-                <thead>
-                <tr>
-                    <td class="col-sm-8"> filename </td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="name in filenames">
-                    <td class="clickable" ng-click="M.selected_filename=name"> {{name}} </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
-
-<div class="col-sm-8">
+<div class="col-sm-12">
 
     <div class="panel panel-primary" >
 
         <h3 class="panel-heading panel-title">
-            Users
+            Pytania
         </h3>
 
         <div class="panel-body" >
-            <p>The following users are active: </p>
-            <input ng-model="fff" placeholder="Filter..." class="iinput narrow-free2">
+            <p>Pytania egzaminacyjne w systemie: </p>
+            <input ng-model="fff" placeholder="Filtruj..." class="iinput narrow-free2">
 
             <table class="table table-bordered table-responsive table-condensed table-striped">
                 <thead>
                 <tr>
-                    <td class="col-sm-1"> Id</td>
-                    <td class="col-sm-6"> Name</td>
-                    <td class="col-sm-5"> Phone</td>
+                    <td class="col-sm-1"> Qid</td>
+                    <td class="col-sm-4"> Text</td>
+                    <td class="col-sm-2"> A1</td>
+                    <td class="col-sm-2"> A2</td>
+                    <td class="col-sm-2"> A3</td>
+                    <td class="col-sm-1">action</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in M.users | filter:fff">
-                    <td> {{item.userid}}</td>
-                    <td> {{item.name}}</td>
-                    <td> {{item.phone}}</td>
+                <tr ng-repeat="item in M.questions | filter:fff">
+                    <td> {{item.qid}}
+                    </td>
+                    <td class="clickable">
+                        <input ng-model="item.text" class="clean_input" placeholder="Treść pytania">
+                    </td>
+                    <td ng-class="(item.correct==1?'success':'default')">
+                        <input ng-model="item.answer1" class="clean_input" placeholder="Odpowiedź nr 1">
+                        <span class="glyphicon glyphicon-ok" ng-click="item.correct=1"/>
+                    </td>
+                    <td ng-class="(item.correct==2?'success':'default')">
+                        <input ng-model="item.answer2" class="clean_input" placeholder="Odpowiedź nr 2">
+                        <span class="glyphicon glyphicon-ok" ng-click="item.correct=2"/>
+                    </td>
+                    <td ng-class="(item.correct==3?'success':'default')">
+                        <input ng-model="item.answer3" class="clean_input" placeholder="Odpowiedź nr 3">
+                        <span class="glyphicon glyphicon-ok" ng-click="item.correct=3"/>
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-trash" ng-click="deleteQuesiton(item)"/>
+                        <span class="glyphicon glyphicon-floppy-disk" ng-click="saveQuestion(item)"/>
+                    </td>
                 </tr>
                 </tbody>
             </table>
 
         </div>
         <div class="panel-footer">
-            (footer)
+            <button class="btn btn-default" ng-click="loadQuestions()">reload</button>
+            <button class="btn btn-default" ng-click="saveAllQuestions()">zapisz wszystkie</button>
+            <br>
+            {{M.questions}}
         </div>
     </div>
 </div>

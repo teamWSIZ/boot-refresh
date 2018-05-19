@@ -23,6 +23,14 @@
     margin-bottom: 1px;
 }
 
+.clean_input {
+    border: none;
+    width: 90%;
+    border-bottom: 1px solid lightslategray;
+    margin-bottom: 1px;
+}
+
+
 .narrow8 {
     width: 80%;
 }

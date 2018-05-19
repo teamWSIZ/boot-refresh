@@ -40,6 +40,41 @@ angular.module('myApp.controllers')
                 });
             };
 
+            $scope.M.questions = [];
+
+
+            //add adding new question
+            $scope.loadQuestions = function() {
+                $http.get($rootScope.M.URL + '/questions')
+                    .success(function (data) {
+                        $scope.M.questions = data;
+                    })
+            };
+
+            $scope.saveQuestion = function(qu) {
+                return $http({
+                    url: $rootScope.M.URL + '/questions',
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    data: JSON.stringify(qu)
+                }).success(function(data){
+                    console.log('Saved question qid=' + qu.qid)
+                });
+            };
+
+            $scope.saveAllQuestions = function () {
+                console.log('Saving all questions');
+                $scope.M.questions.forEach(function(q){
+                    $scope.saveQuestion(q);
+                });
+            };
+
+
+            //startup
+            $scope.loadQuestions();
+
+
+
             $scope.loadUsers = function() {
                 $http.get($rootScope.M.URL + '/users')
                     .success(function (data) {

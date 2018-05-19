@@ -13,11 +13,11 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "questiontype")
+@Table(name = "qtype")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuesitonType {
+public class QType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer qtid;
