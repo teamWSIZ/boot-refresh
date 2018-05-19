@@ -71,6 +71,21 @@ angular.module('myApp.controllers')
                 });
             };
 
+            $scope.addQuestion = function () {
+                let nowy = {
+                    "qid": null,
+                    "text": "",
+                    "answer1": "",
+                    "answer2": "",
+                    "answer3": "",
+                    "correct": 1,
+                    "typeid": 1,
+                    "active": true
+                };
+                $scope.M.questions.push(nowy);
+
+            };
+
 
             //startup
             $scope.loadQuestions();

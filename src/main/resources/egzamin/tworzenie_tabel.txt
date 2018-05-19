@@ -3,7 +3,7 @@ create SCHEMA egzamin;
 set SEARCH_PATH to egzamin;
 
 -- tworzenie tabeli usera z automatycznie generowanym polem uid
-CREATE TABLE egzamin.questiontype (
+CREATE TABLE qtype (
   qtid SERIAL PRIMARY KEY,
   description text
 );
