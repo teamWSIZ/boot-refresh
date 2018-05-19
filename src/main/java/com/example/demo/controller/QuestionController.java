@@ -25,6 +25,18 @@ public class QuestionController {
     @Autowired
     QuestionRepo questionRepo;
 
+    private void bla() {
+        Question q = new Question();
+        q.setAnswer1("Abra kadabra");
+    }
+
+
+    /**
+     * Ta operacja bedzie dostepna pod
+     *
+     * powinna zwrocic (json) tabele z pelnymi obiektami typu
+     * Question
+     */
     @RequestMapping(value = "", method = GET)
     public Iterable<Question> getAllQuestions() {
         List<Question> all = Lists.newArrayList(questionRepo.findAll()); //guava

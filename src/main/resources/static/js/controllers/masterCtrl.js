@@ -40,8 +40,10 @@ angular.module('myApp.controllers')
                 });
             };
 
-            $scope.M.questions = [];
+            //////////////////////////////////////////
+            // Zestaw funkcji do zarzadzania pytaniami
 
+            $scope.M.questions = [];
 
             //add adding new question
             $scope.loadQuestions = function() {
@@ -72,6 +74,9 @@ angular.module('myApp.controllers')
 
             //startup
             $scope.loadQuestions();
+
+
+            //////////////////////////////////////////
 
 
 
