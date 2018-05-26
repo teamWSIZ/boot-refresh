@@ -1,17 +1,17 @@
 
 <div class="col-sm-12">
 
-    <div class="panel panel-primary" >
+    <div class="card" >
 
-        <h3 class="panel-heading panel-title">
+        <h3 class="card-header card-title bg-info text-white">
             Pytania
         </h3>
 
-        <div class="panel-body" >
+        <div class="card-body" >
             <p>Pytania egzaminacyjne w systemie: </p>
             <input ng-model="fff" placeholder="Filtruj..." class="iinput narrow-free2">
 
-            <table class="table table-bordered table-responsive table-condensed table-striped">
+            <table class="table table-hover table-condensed">
                 <thead>
                 <tr>
                     <td class="col-sm-1"> Qid</td>
@@ -27,34 +27,33 @@
                     <td> {{item.qid}}
                     </td>
                     <td class="clickable">
-                        <input ng-model="item.text" class="clean_input" placeholder="Treść pytania">
+                        <input type="text" ng-model="item.text" class="form-control" placeholder="Treść pytania">
                     </td>
-                    <td ng-class="(item.correct==1?'success':'default')">
-                        <input ng-model="item.answer1" class="clean_input" placeholder="Odpowiedź nr 1">
-                        <span class="glyphicon glyphicon-ok" ng-click="item.correct=1"/>
+                    <td ng-class="(item.correct==1?'table-success':'table-default')" ng-dblclick="item.correct=1">
+                        <input ng-model="item.answer1" class="form-control" placeholder="Odpowiedź nr 1">
                     </td>
-                    <td ng-class="(item.correct==2?'success':'default')">
-                        <input ng-model="item.answer2" class="clean_input" placeholder="Odpowiedź nr 2">
-                        <span class="glyphicon glyphicon-ok" ng-click="item.correct=2"/>
+                    <td ng-class="(item.correct==2?'table-success':'table-default')" ng-dblclick="item.correct=2">
+                        <input ng-model="item.answer2" class="form-control" placeholder="Odpowiedź nr 2">
                     </td>
-                    <td ng-class="(item.correct==3?'success':'default')">
-                        <input ng-model="item.answer3" class="clean_input" placeholder="Odpowiedź nr 3">
-                        <span class="glyphicon glyphicon-ok" ng-click="item.correct=3"/>
+                    <td ng-class="(item.correct==3?'table-success':'table-default')" ng-click="item.correct=3">
+                        <input ng-model="item.answer3" class="form-control" placeholder="Odpowiedź nr 3">
                     </td>
                     <td>
-                        <span class="glyphicon glyphicon-trash" ng-click="deleteQuesiton(item)"/>
-                        <span class="glyphicon glyphicon-floppy-disk" ng-click="saveQuestion(item)"/>
+                        <i class="fa fa-save clickable" ng-click="saveQuestion(item)"/>
+                        <i class="fa fa-trash clickable text-danger" ng-click="deleteQuesiton(item)"/>
                     </td>
                 </tr>
                 </tbody>
             </table>
 
         </div>
-        <div class="panel-footer">
-            <button class="btn btn-default" ng-click="loadQuestions()">reload</button>
-            <button class="btn btn-default" ng-click="saveAllQuestions()">zapisz wszystkie</button>
-            <button class="btn btn-default" ng-click="addQuestion()">dodaj pytanie</button>
-            <br>
+        <div class="card-footer">
+            <button type="button" class="btn btn-default" ng-click="loadQuestions()">reload</button>
+            <button type="button" class="btn btn-default" ng-click="saveAllQuestions()">zapisz wszystkie</button>
+            <button type="button" class="btn btn-default" ng-click="addQuestion()">dodaj pytanie</button>
+            <br/>
+            <hr/>
+            Zawartość tabeli M.questions:
             {{M.questions}}
         </div>
     </div>
