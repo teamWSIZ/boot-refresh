@@ -10,7 +10,7 @@
             <p>Pytania egzaminacyjne w systemie </p>
             <input ng-model="fff" placeholder="Filtruj..." class="iinput narrow-free2">
 
-            <table class="table table-hover">
+            <table class="table table-hover table-sm">
                 <thead>
                 <tr>
                     <th class="w-5"> Qid</th>
@@ -26,26 +26,26 @@
                     <td> {{item.qid}}
                     </td>
                     <td class="clickable">
-                        <input type="text" ng-model="item.text" class="form-control"
+                        <input type="text" ng-model="item.text" class="form-control form-control-sm"
                                ng-attr-title="{{item.text}}"
                                placeholder="Treść pytania">
                     </td>
                     <td ng-dblclick="item.correct=1" >
                         <input ng-model="item.answer1"
                                ng-class="(item.correct==1?'bg-success':'bg-white')"
-                               class="form-control"
+                               class="form-control form-control-sm"
                         >
                     </td>
                     <td ng-dblclick="item.correct=2">
                         <input ng-model="item.answer2"
                                ng-class="(item.correct==2?'bg-success':'bg-white')"
-                               class="form-control"
+                               class="form-control form-control-sm"
                         >
                     </td>
                     <td ng-dblclick="item.correct=3">
                         <input ng-model="item.answer3"
                                ng-class="(item.correct==3?'bg-success':'bg-white')"
-                               class="form-control"
+                               class="form-control form-control-sm"
                         >
                     </td>
                     <td>
@@ -81,7 +81,7 @@
             <p>Typy pytań w systemie: </p>
             <input ng-model="fff" placeholder="Filtruj..." class="iinput narrow-free2"/>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered table-sm">
                 <thead>
                 <tr>
                     <td class="col-sm-1"> qtid</td>
@@ -93,13 +93,11 @@
                 <tr ng-repeat="item in M.types">
                     <td>{{item.qtid}}</td>
                     <td>
-                        <input type="text" ng-model="item.description" ng-class="form-control"/>
+                        <input type="text" ng-model="item.description" ng-class="form-control form-control-sm"/>
                     </td>
                     <td>
-                        <h5>
                         <span class="fa fa-trash clickable text-danger" ng-click="deleteType(item)"
                             ng-attr-title="Usuń typ #{{item.qtid}}"></span>
-                        </h5>
                     </td>
                 </tr>
                 </tbody>
