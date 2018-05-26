@@ -69,10 +69,10 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/{qid}", method = DELETE)
-    public String deleteQuestion(@PathVariable Integer qid) {
+    public GenericResponse deleteQuestion(@PathVariable Integer qid) {
         log.info("Deleting question with qid=[{}]", qid);
         questionRepo.delete(qid);
-        return "Wykonano OK";
+        return new GenericResponse("OK", "OK");
     }
 
 }

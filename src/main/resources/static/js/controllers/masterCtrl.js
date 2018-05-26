@@ -44,6 +44,7 @@ angular.module('myApp.controllers')
             // Zestaw funkcji do zarzadzania pytaniami
 
             $scope.M.questions = [];
+            $scope.M.types = [];
 
             //add adding new question
             $scope.loadQuestions = function() {
@@ -83,6 +84,16 @@ angular.module('myApp.controllers')
                 });
             };
 
+            ///////////////////////////////
+            $scope.loadTypes = function() {
+                $http.get($rootScope.M.URL + '/qtypes')
+                    .success(function (data) {
+                        $scope.M.types = data;
+                    })
+            };
+
+
+
             $scope.addQuestion = function () {
                 let nowy = {
                     "qid": null,
@@ -101,6 +112,7 @@ angular.module('myApp.controllers')
 
             //startup
             $scope.loadQuestions();
+            $scope.loadTypes();
 
 
             //////////////////////////////////////////

@@ -39,9 +39,11 @@
                         <input ng-model="item.answer3" class="form-control" placeholder="Odpowiedź nr 3">
                     </td>
                     <td>
-                        <!--<i class="fa fa-save clickable" ng-click="saveQuestion(item)"></i>-->
+                        <span class="fa fa-save clickable" ng-click="saveQuestion(item)"></span>
                         <!--OOOOOO-->
-                        <i class="fa fa-trash clickable text-danger" ng-click="deleteQuesiton(item)"></i>
+                        <span class="fa fa-trash clickable text-danger" ng-click="deleteQuestion(item)"></span>
+                        <!--<button type="button" class="btn btn-danger" ng-click="deleteQuestion(item)">delete</button>-->
+
                     </td>
                 </tr>
                 </tbody>
@@ -58,4 +60,51 @@
             {{M.questions}}
         </div>
     </div>
+
+    <div class="card" >
+
+        <h3 class="card-header card-title bg-primary text-white">
+            Typy pytań
+        </h3>
+
+        <div class="card-body" >
+            <p>Typy pytań w systemie: </p>
+            <input ng-model="fff" placeholder="Filtruj..." class="iinput narrow-free2">
+
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <td class="col-sm-2"> qtid</td>
+                    <td class="col-sm-8"> opis</td>
+                    <td class="col-sm-2"> action</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in M.types | filter:fff">
+                    <td> {{item.qtid}}
+                    </td>
+                    <td class="clickable">
+                        <input type="text" ng-model="item.description" class="form-control" placeholder="Nazwa typu (kategorii)">
+                    </td>
+                    <td>
+                        <span class="fa fa-save clickable" ng-click="saveType(item)"></span>
+                        <span class="fa fa-trash clickable text-danger" ng-click="deleteType(item)"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-default" ng-click="loadTypes()">reload</button>
+            <button type="button" class="btn btn-default" ng-click="saveAllTypes()">zapisz wszystkie</button>
+            <button type="button" class="btn btn-default" ng-click="addType()">dodaj kategorię</button>
+            <br/>
+            <hr/>
+            Zawartość tabeli M.types:
+            {{M.types}}
+        </div>
+    </div>
+
+
 </div>
