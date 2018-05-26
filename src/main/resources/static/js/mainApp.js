@@ -15,7 +15,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: urlBase + 'basicView.html',
         controller: 'masterCtrl'
     }).when('/view2', {
-        templateUrl: urlBase + 'dataView.html',
+        templateUrl: urlBase + 'pytaniaView.html',
         controller: 'masterCtrl'
     });
 }]);

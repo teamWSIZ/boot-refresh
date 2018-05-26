@@ -10,35 +10,7 @@ angular.module('myApp.controllers')
             //To jest uruchamiane przy każdym wejściu do widoku korzystającego z tego kontrolera
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
-            $scope.M.appItems = [];
-            $scope.M.users = [];
-            $scope.M.message = '';
-            $scope.newItem = {};
             $scope.fff = '';
-            $scope.current_path = '.';
-            $scope.filenames = [];
-            $scope.M.selected_filename='.';
-
-            $scope.cleanItem = function () {
-                $scope.newItem = {id: '0', title: '', body: ''};
-                console.log('New item set')
-            };
-
-            $scope.sendNewItem = function() {
-                return $http({
-                    url: $rootScope.M.URL + '/items',
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    data: JSON.stringify($scope.newItem)
-                    // ,
-                    // params: any_object
-                }).success(function(data){
-                    alert('Send operation OK' + data);
-                    $scope.loadArray();
-                    $scope.cleanItem();
-                    $scope.newItem = null;
-                });
-            };
 
             //////////////////////////////////////////
             // Zestaw funkcji do zarzadzania pytaniami
@@ -106,7 +78,6 @@ angular.module('myApp.controllers')
                     "active": true
                 };
                 $scope.M.questions.push(nowy);
-
             };
 
 
@@ -116,76 +87,6 @@ angular.module('myApp.controllers')
 
 
             //////////////////////////////////////////
-
-
-
-            $scope.loadUsers = function() {
-                $http.get($rootScope.M.URL + '/users')
-                    .success(function (data) {
-                        $scope.M.users = data;
-                        // $scope.M.appItems.sort(function (a, b) {
-                        //     return a.title.toLowerCase() > b.title.toLowerCase();
-                        // })
-                    })
-            };
-
-            //lists files
-            $scope.listFiles = function(path) {
-                let par = {
-                    path: path
-                };
-                return $http({
-                    url: $rootScope.M.URL + '/files',
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/json'},
-                    params: par
-                }).success(function(data){
-                    $scope.filenames = data;
-                });
-            }
-
-            $scope.upload = function () {
-                console.log('uploading file!');
-                const f = document.getElementById('uploadedfiles').files[0];
-                let r = new FileReader();
-                r.onloadend = function (e) {
-                    let url = $rootScope.M.URL + '/files/upload';
-                    let formData = new FormData();
-                    formData.append('file', f);
-
-                    $http.post(url, formData, {
-                        headers: {'Content-Type': undefined}
-                    }).success(function (msg) {
-                        console.log('OK');
-                    }).error(function (msg) {
-                        console.log('Sending file failed');
-                    });
-                };
-                r.readAsDataURL(f);
-            };
-
-            $scope.uploadFile = function(event){
-                var files = event.target.files;
-                console.log(files);
-                const f = files[0];
-                console.log(f);
-                let r = new FileReader();
-                r.onloadend = function (e) {
-                    let url = $rootScope.M.URL + '/files/upload';
-                    let formData = new FormData();
-                    formData.append('file', f);
-
-                    $http.post(url, formData, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    }).success(function (msg) {
-                        console.log('OK');
-                    }).error(function (msg) {
-                        console.log('Sending file failed');
-                    });
-                };
-                r.readAsDataURL(f);
-            };
 
 
             // $timeout(function(){

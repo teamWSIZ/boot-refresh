@@ -1,13 +1,13 @@
-<div class="col-md-9 boxed">
+<div class="col-sm-8">
 
     <div class="card">
 
-        <h3 class="card-header card-title bg-info text-white">
+        <h3 class="card-header bg-info text-white">
             Pytania
         </h3>
 
         <div class="card-body" >
-            <p>Pytania egzaminacyjne w systemie: </p>
+            <p>Pytania egzaminacyjne w systemie </p>
             <input ng-model="fff" placeholder="Filtruj..." class="iinput narrow-free2">
 
             <table class="table table-hover">
@@ -26,9 +26,11 @@
                     <td> {{item.qid}}
                     </td>
                     <td class="clickable">
-                        <input type="text" ng-model="item.text" class="form-control" placeholder="Treść pytania">
+                        <input type="text" ng-model="item.text" class="form-control"
+                               ng-attr-title="{{item.text}}"
+                               placeholder="Treść pytania">
                     </td>
-                    <td ng-dblclick="item.correct=1">
+                    <td ng-dblclick="item.correct=1" >
                         <input ng-model="item.answer1"
                                ng-class="(item.correct==1?'bg-success':'bg-white')"
                                class="form-control"
@@ -47,9 +49,10 @@
                         >
                     </td>
                     <td>
+                        <h5>
                         <span class="fa fa-save clickable" ng-click="saveQuestion(item)"></span>
                         <span class="fa fa-trash clickable text-danger" ng-click="deleteQuestion(item)"></span>
-
+                        </h5>
                     </td>
                 </tr>
                 </tbody>
@@ -67,7 +70,7 @@
 
 </div>
 
-<div class="col-md boxed">
+<div class="col-sm">
     <div class="card" >
 
         <h3 class="card-header card-title bg-primary text-white">
@@ -81,35 +84,37 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <td class="col-sm-2"> qtid</td>
-                    <td class="col-sm-8"> opis</td>
-                    <td class="col-sm-2"> action</td>
+                    <td class="col-sm-1"> qtid</td>
+                    <td class="col-sm-10"> opis</td>
+                    <td class="col-sm"> action</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
+                <tr ng-repeat="item in M.types">
+                    <td>{{item.qtid}}</td>
+                    <td>
+                        <input type="text" ng-model="item.description" ng-class="form-control"/>
+                    </td>
+                    <td>
+                        <h5>
+                        <span class="fa fa-trash clickable text-danger" ng-click="deleteType(item)"
+                            ng-attr-title="Usuń typ #{{item.qtid}}"></span>
+                        </h5>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+            <p class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="M.types.push({})" title="Dodaj kategorię pytań">
+                    <span class="fa fa-plus"></span>
+                </button>
+            </p>
         </div>
 
         <div class="card-footer">
-            <button type="button" class="btn btn-default" ng-click="loadTypes()">reload</button>
+            <button type="button" class="btn btn-default" ng-click="loadTypes()"> <span class="fa fa-refresh"></span>
+            </button>
             <button type="button" class="btn btn-default" ng-click="saveAllTypes()">zapisz wszystkie</button>
-            <button type="button" class="btn btn-default" ng-click="addType()">dodaj kategorię</button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            Featured
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
 
