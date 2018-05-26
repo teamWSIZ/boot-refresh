@@ -54,6 +54,7 @@ angular.module('myApp.controllers')
             };
 
             $scope.saveQuestion = function(qu) {
+                console.log("zapisuję pytanie");
                 return $http({
                     url: $rootScope.M.URL + '/questions',
                     method: 'PUT',
@@ -61,6 +62,17 @@ angular.module('myApp.controllers')
                     data: JSON.stringify(qu)
                 }).success(function(data){
                     console.log('Saved question qid=' + qu.qid)
+                });
+            };
+
+            $scope.deleteQuestion = function(qu) {
+                console.log("wycinam...");
+                return $http({
+                    url: $rootScope.M.URL + '/questions/' + qu.qid,
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'}
+                }).success(function(data){
+                    console.log('Deleted question qid=' + qu.qid)
                 });
             };
 
