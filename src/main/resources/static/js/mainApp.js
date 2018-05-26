@@ -6,7 +6,7 @@ var app = angular.module('myApp', [
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
-    var urlBase='partials/';
+    const urlBase = 'partials/';
 
     $routeProvider.when('/', {
         templateUrl: urlBase + 'basicView.html',
