@@ -17,7 +17,7 @@ public class AppController {
 
     @RequestMapping(value = "/status")
     public String showStatus() {
-        return "App running OK";
+        return "Aplikacja działa prawidłowo";
     }
 
 

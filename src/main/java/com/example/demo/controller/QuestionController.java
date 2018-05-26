@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
@@ -65,6 +66,13 @@ public class QuestionController {
         if (isUpdate) log.info("Question updated to [{}]", question);
         else log.info("New question created: [{}]", question);
         return question;
+    }
+
+    @RequestMapping(value = "/{qid}", method = DELETE)
+    public String deleteQuestion(@PathVariable Integer qid) {
+        log.info("Deleting question with qid=[{}]", qid);
+        questionRepo.delete(qid);
+        return "Wykonano OK";
     }
 
 }

@@ -1,0 +1,4 @@
+
+
+GET http://localhost:8888/status        : ogólny status systemu
+GET http://localhost:8888/questions     : wszystkie pytania w systemie
