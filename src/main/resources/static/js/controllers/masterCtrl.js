@@ -5,8 +5,8 @@ angular.module('myApp.controllers',[]);
 //Kontroler użyty na panelu userów (panel zarządzania danymi)
 angular.module('myApp.controllers')
 .controller('masterCtrl',
-    ['$rootScope','$scope', '$http', '$timeout', '$interval',
-        function ($rootScope, $scope, $http, $timeout, $interval) {
+    ['$rootScope','$scope', '$http', '$timeout', '$interval', '$q',
+        function ($rootScope, $scope, $http, $timeout, $interval, $q) {
             //To jest uruchamiane przy każdym wejściu do widoku korzystającego z tego kontrolera
             //Lokalny obiekt modelu, tworzony przy każdym uruchomieniu kontrolera
             $scope.M = {};
@@ -87,7 +87,45 @@ angular.module('myApp.controllers')
 
 
             //////////////////////////////////////////
+            // async, primises, CopletableFutures
 
+            //returns CompletableFuture<Integer>
+            function longcall(dur) {
+                return $http.get($rootScope.M.URL + '/longcall?duration=' + dur)    //already CF
+                    .then(function (response) {
+                        //in .success() we already get `data`
+                        //in .then() we get `response`, of which the we must extract data, response.data
+                        console.log('inner res:' + response.data.result);
+                        return response.data.result;
+                    });     //further (processed) CF
+            };
+
+            $scope.executeAsync = function() {
+                console.log('start...');
+                longcall(501).then(function (res) {
+                        console.log('returned: ' + res);
+                    });
+            };
+
+            $scope.executeTwoAsyncWaitForBoth = function() {
+                console.log('start...');
+                let cf1 = longcall(1501);
+                let cf2 = longcall(2701);
+                $q.all([cf1, cf2])
+                    .then(function (resarr) {
+                            let res1, res2;
+                            [res1, res2] = [resarr[0], resarr[1]];
+                            console.log('from 1: ' + res1 + ', from 2: ', res2);
+                        }, function (reason) {
+                            console.log('An error has occurred:' + reason);
+                        }
+                    );
+            };
+
+
+
+
+            //////////////////////////////////////////
 
             // $timeout(function(){
             //     $scope.M.message += '.';

@@ -6,7 +6,7 @@
         <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <button class="btn btn-primary">Go somewhere</button>
+            <button class="btn btn-primary" ng-click="executeAsync()">Launch async</button>
         </div>
     </div>
 
@@ -17,12 +17,12 @@
 <div class="col-sm-8">
     <div class="card">
         <div class="card-header">
-            Featured
+            The $q.all call
         </div>
         <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Waiting for two async calls</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <button class="btn btn-primary" ng-click="executeTwoAsyncWaitForBoth()">Launch two async calls</button>
         </div>
     </div>
 </div>
