@@ -64,6 +64,18 @@ angular.module('myApp.controllers')
                     })
             };
 
+            $scope.saveType = function(qtype) {
+                console.log("zapisuję typ pytań " + JSON.stringify(qtype));
+                return $http({
+                    url: $rootScope.M.URL + '/qtypes',
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    data: JSON.stringify(qtype)
+                }).success(function(data){
+                    console.log('Saved qtype:' + JSON.stringify(data));
+                });
+            };
+
 
 
             $scope.addQuestion = function () {
