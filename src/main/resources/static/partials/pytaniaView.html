@@ -13,12 +13,13 @@
             <table class="table table-hover table-sm">
                 <thead>
                 <tr>
-                    <th class="w-5"> Qid</th>
+                    <th class="w-10"> Qid</th>
                     <th class="w-30"> Text</th>
-                    <th class="w-20"> A1</th>
-                    <th class="w-20"> A2</th>
-                    <th class="w-20"> A3</th>
-                    <th class="w-5">action</th>
+                    <th class="w-10"> A1</th>
+                    <th class="w-10"> A2</th>
+                    <th class="w-10"> A3</th>
+                    <th class="w-20"> typ</th>
+                    <th class="w-10">action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,9 @@
                                ng-class="(item.correct==3?'bg-success':'bg-white')"
                                class="form-control form-control-sm"
                         >
+                    </td>
+                    <td>
+                        <select class="form-control" ng-model="M.wybranyTyp" ng-options="typ.description for typ in  M.types"></select>
                     </td>
                     <td>
                         <h5>
