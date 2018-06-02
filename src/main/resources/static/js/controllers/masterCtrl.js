@@ -73,6 +73,18 @@ angular.module('myApp.controllers')
                     data: JSON.stringify(qtype)
                 }).success(function(data){
                     console.log('Saved qtype:' + JSON.stringify(data));
+                    $scope.loadTypes();
+                });
+            };
+
+            $scope.deleteType = function(qtype) {
+                console.log("usuwam typ pytań " + JSON.stringify(qtype));
+                return $http({
+                    url: $rootScope.M.URL + '/qtypes/' + qtype.qtid,
+                    method: 'DELETE'
+                }).success(function(data){
+                    console.log('Removed qtype:' + JSON.stringify(data));
+                    $scope.loadTypes();
                 });
             };
 
