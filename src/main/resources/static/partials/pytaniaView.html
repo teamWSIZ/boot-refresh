@@ -50,7 +50,7 @@
                         >
                     </td>
                     <td>
-                        <select class="form-control" ng-model="M.wybranyTyp" ng-options="typ.description for typ in  M.types"></select>
+                        <select class="form-control" ng-model="item.fulltype" ng-options="typ.description for typ in  M.types"></select>
                     </td>
                     <td>
                         <h5>
@@ -68,6 +68,9 @@
             <button type="button" class="btn btn-default" ng-click="saveAllQuestions()">zapisz wszystkie</button>
             <button type="button" class="btn btn-default" ng-click="addQuestion()">dodaj pytanie</button>
         </div>
+        <span>
+            {{M.questions}}
+        </span>
     </div>
 
 
