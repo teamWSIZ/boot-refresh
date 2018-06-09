@@ -1,0 +1,37 @@
+
+Założenia:
+1) Dana jest baza z dostępem (ip, port, nazwa bazy, (nazwa schematu), user, password)
+2) Na bazie są tabele (powiedzmy Users, Products); każda z tabeli ma kolumnę "id", unikalnie
+   charakeryzującą rzędy
+3) Między tabelami są relacje, opisane kluczami obcymi
+
+
+--------------------------------
+Podłączenie do Java/RESTController/WebApp:
+
+1) Stworzyć pakiet "model", gdzie dla każdej tabeli będzie odpowiednia klasa Javy, z odpowiednio zmapowanymi polami
+  - nazwy kolumn muszą się zgadzać
+
+2) Stworzyć pakiet "service", w nim potworzyć odpowiednie interfejsy "Repo", np. "UserRepo", "ProductRepo"
+   (te które potrzebujemy); na początku można stworzyć jedno
+
+
+3) Stworzyć kontrolery dla każdego typu danych (każdej tabeli); z podstawowymi metodami (CRUD), czyli:
+   - create/update --> metoda POST, akceputjąca pełny obiekt; nowa instancja będzie miała "id=null", np. userid=null
+   - czytanie obiektów --> metoda GET  --> zrobić findAll() zwracającą wszystkie rzędy/obiekty danego typu
+   - usuwanie obiektów --> metoda DELETE --> akceptująca id rzędu do usunięcia (np. userid)
+
+
+4) przetestować pracę z danymi tworząc zapytania w postman'ie, zapisać kolekcję postmana
+
+5) robienie frontendu:
+
+a) zrobić prosty widok z buttonami, pod które podpięte są akcje wczytywania wszystkich rekordów/rzędów danego typu
+   przykład: button "getUsers" --> akcja getUsers() (na masterCtrl.js) --> zmienia js obiekt M.users; na widoku podepniemy
+   w wygodnym miejscu {{M.users}}
+
+b) oprogramować główne widoki do edycji każdego z typów (pokazać wszystkie, dodać edycję, zapis, usuwanie)
+
+c) tam gdzie są klucze obce dodać odpowiednie "select"y
+
+d) have fun!
