@@ -45,20 +45,6 @@ public class QuestionController {
         return all;
     }
 
-
-    @RequestMapping(value = "new", method = GET)
-    public Question newQuesiton(
-            @RequestParam(name = "text") String text,
-            @RequestParam(name = "q1") String q1,
-            @RequestParam(name = "q2") String q2,
-            @RequestParam(name = "q3") String q3,
-            @RequestParam(name = "correct") Integer correct
-    ) {
-        Question nowe = new Question(null, text, q1, q2, q3, correct, 1, true);
-
-        return questionRepo.save(nowe);
-    }
-
     @RequestMapping(method = PUT)
     public Question upsertQuestion(@RequestBody Question question) {
         boolean isUpdate = (question.getQid() != null);
@@ -74,5 +60,27 @@ public class QuestionController {
         questionRepo.delete(qid);
         return new GenericResponse("OK", "OK");
     }
+
+    ////// próby metod JPA
+
+    //http://localhost:8888/questions/bytype?typeid=22
+    @RequestMapping(value = "/bytype", method = GET)
+    public Iterable<Question> getQuestionsByType(@RequestParam(value = "typeid") Integer typeid) {
+        return questionRepo.findByTypeid(typeid);
+    }
+
+    //http://localhost:8888/questions/bytext?textprefix=Poj
+    @RequestMapping(value = "/bytext", method = GET)
+    public Iterable<Question> getQuestionsByText(@RequestParam(value = "textprefix") String textprefix) {
+        return questionRepo.findByTextStartingWith(textprefix);
+    }
+
+    //http://localhost:8888/questions/deltype?typeid=1
+    @RequestMapping(value = "/deltype", method = GET)
+    public GenericResponse deleteQuestionsByType(@RequestParam(value = "typeid") Integer typeid) {
+        questionRepo.deleteByTypeid(typeid);
+        return new GenericResponse();
+    }
+
 
 }

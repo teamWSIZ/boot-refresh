@@ -28,8 +28,6 @@ angular.module('myApp.controllers')
 
             $scope.saveQuestion = function(qu) {
                 console.log("zapisuję pytanie: " + JSON.stringify(qu));
-                qu.typeid = qu.fulltype.qtid;
-
                 return $http({
                     url: $rootScope.M.URL + '/questions',
                     method: 'PUT',
