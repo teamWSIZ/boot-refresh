@@ -46,6 +46,8 @@ public class QuestionController {
         return questionRepo.findAllByOrderByQidAsc();
     }
 
+    //ściąganie wszystkich pytań, których typ ma w opisie 'text'
+    //http://localhost:8888/questions/typecontains?text=logy
     @RequestMapping(value = "/typecontains", method = GET)
     public Iterable<Question> getAllQuestions(@RequestParam(value = "text") String text) {
         String wildcard = "%" + text + "%";
