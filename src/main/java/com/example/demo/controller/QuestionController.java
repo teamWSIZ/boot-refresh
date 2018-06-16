@@ -40,9 +40,16 @@ public class QuestionController {
      */
     @RequestMapping(value = "", method = GET)
     public Iterable<Question> getAllQuestions() {
-        List<Question> all = Lists.newArrayList(questionRepo.findAll()); //guava
-        Collections.sort(all, Comparator.comparingInt(Question::getQid));
-        return all;
+        //nieposotrowane można dostać przez:
+        //questionRepo.findAll()
+
+        return questionRepo.findAllByOrderByQidAsc();
+    }
+
+    @RequestMapping(value = "/typecontains", method = GET)
+    public Iterable<Question> getAllQuestions(@RequestParam(value = "text") String text) {
+        String wildcard = "%" + text + "%";
+        return questionRepo.findAllInterestingQuestionsWithTypeSimilarTo(wildcard);
     }
 
     @RequestMapping(method = PUT)
