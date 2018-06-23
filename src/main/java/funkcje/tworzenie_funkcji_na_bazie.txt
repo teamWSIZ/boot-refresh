@@ -1,0 +1,50 @@
+set search_path to egzamin;
+select * from qtype;
+
+
+
+
+-- funkcja zmieniająca opis kategorii (qtype) o podanym qtid
+CREATE OR REPLACE FUNCTION updatetype(idtype integer, descr text)
+  RETURNS integer
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  i integer;
+BEGIN
+  UPDATE egzamin.qtype
+  SET description=descr
+  WHERE qtid = idtype;
+  i:=idtype;
+  RETURN i;
+END;
+$$;
+
+-- 29	Planetology
+select * from updatetype(29, 'Medicine!');
+
+
+-- .....................
+
+-- 63	Pytanie o karetki	Ile karetek	ilu ludzi	1	29	true	dwwdwd
+
+-- funkcja zmieniająca opis pytania i jego poprawną odpowiedź
+CREATE OR REPLACE FUNCTION updatepytanie(idpytania integer, tekstpytania text, correctanswer int)
+  RETURNS integer
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  i integer;
+BEGIN
+  UPDATE egzamin.question
+  SET
+      text = tekstpytania,
+      correct = correctanswer
+
+  WHERE qid = idpytania;
+  i:=idpytania;
+  RETURN i;
+END;
+$$;
+
+select * from updatepytanie(63, 'pytanie 63', 1);
