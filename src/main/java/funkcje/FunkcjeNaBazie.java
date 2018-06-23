@@ -51,7 +51,9 @@ class DbUpdater {
             cst.setString(2, tekstpytania);
             cst.setInt(3, correctanswer);
         } catch (SQLException e) {
-            log.error("Błąd tworzenia statement-u");
+            log.error("Błąd tworzenia statement-u", e);
+            //vv jeśli nie mamy projektu typu maven -- trzeba usunąć 'log'-i
+            System.out.println("Błąd tworzenia statement-u" + e);
         }
         log.info("Przygotowano statement");
 
