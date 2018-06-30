@@ -1,0 +1,23 @@
+﻿@model int
+@inject ProjektowanieBazDanychT1.Data.ApplicationDbContext dbContext
+@{
+    ViewData["Title"] = "Wypelnij";
+}
+
+<form asp-action="Wypelnij">
+    <input type="hidden" value="@Model" name="testId"/>
+    @foreach (var question in dbContext.Questions)
+    {
+        <div>@question.QuestionText</div><br />
+        <span>@question.Answer1</span><br/>
+        <span>@question.Answer2</span><br />
+        <span>@question.Answer3</span><br />
+        <span>@question.Answer4</span><br />
+        <input type="text" name="@question.Id" />
+    }
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-default" />
+    </div>
+</form>
+
+

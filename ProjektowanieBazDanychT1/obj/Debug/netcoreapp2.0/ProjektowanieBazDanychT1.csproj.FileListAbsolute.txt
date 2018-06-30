@@ -1,0 +1,12 @@
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\bin\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.deps.json
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\bin\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.runtimeconfig.json
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\bin\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.runtimeconfig.dev.json
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\bin\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.dll
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\bin\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.pdb
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.csproj.CoreCompileInputs.cache
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.AssemblyInfoInputs.cache
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.AssemblyInfo.cs
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.dll
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.pdb
+C:\Projects\ProjektowanieBazDanychT1\ProjektowanieBazDanychT1\obj\Debug\netcoreapp2.0\ProjektowanieBazDanychT1.csprojResolveAssemblyReference.cache
