@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * Konkretny test zainicjowany przez usera.
- * Przy tworzeniu testu zostaną wylosowane pytania (i zapisane do tabeli TestQuestion)
+ * Przy tworzeniu testu zostaną wylosowane pytania (i zapisane do tabeli Answer)
  */
 
 @Entity

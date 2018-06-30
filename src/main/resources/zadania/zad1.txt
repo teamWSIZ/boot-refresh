@@ -6,14 +6,15 @@ Jest:
 testquestion.qid daje typ pytania który został zadany
 
 --------------------
-_) stworzyć "TestQuestionRepo", podobnie jak wszystkie inne "Repo"
+_) stworzyć "AnswerRepo", podobnie jak wszystkie inne "Repo"
 _) stworzyć kontroler i metody pozwalające na przeglądanie istniejących
    "testQuestion" (odpowiedzi na pytania)
 _) dodać do repo metodę pozwalającą na przegląd odpowiedzi na pytania
    danego typu (po qid)
 _) dodać w kontrolerze metodę pozwalającą na "ściągnięcie" tych odpowiedzi
    do browsera... czyli np.
-   /testquestion/byquestion?qid=47
+   /answers/byquestion?qid=47
+   localhost:8888/answers/byquestion?qid=47
    ma zwracać wszystkie odpowiedzi na pytania typu "47"
  
 

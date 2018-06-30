@@ -15,11 +15,11 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "testquestion")
+@Table(name = "answers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TestQuestion {
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer tqid;
