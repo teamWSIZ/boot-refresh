@@ -19,4 +19,11 @@ _) dodać w kontrolerze metodę pozwalającą na "ściągnięcie" tych odpowiedz
  
 _) dodać metodę (na repo i na kontrolerze) do przeglądania odpowiedzi (answers)  po "tid"
    (czyli po id testu do którego odpowiedzi zostały udzielone)
+   --> /answers/bytest?tid=2
+
+_) włączyć program "postman" i w nim zademonstrować działanie dodanych zapytań
+   /answers/byquestion?qid=47
+   /answers/bytest?tid=2
+
+
 
