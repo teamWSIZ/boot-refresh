@@ -14,13 +14,9 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.12.RELEASE</version>
+		<version>1.5.14.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
-    <!--https://start.spring.io/ select Web, JPA-->
-
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -36,7 +32,29 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <!--<artifactId>spring-boot-starter-jetty</artifactId>-->
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.eclipse.jetty</groupId>-->
+            <!--<artifactId>jetty-alpn-server</artifactId>-->
+            <!--<version>${jetty.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.eclipse.jetty.http2</groupId>-->
+            <!--<artifactId>http2-server</artifactId>-->
+            <!--<version>${jetty.version}</version>-->
+        <!--</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,13 +86,6 @@
             <artifactId>lombok</artifactId>
             <version>1.16.6</version>
         </dependency>
-
-		<!--<dependency>-->
-			<!--<groupId>org.fluttercode.datafactory</groupId>-->
-			<!--<artifactId>datafactory</artifactId>-->
-			<!--<version>0.8</version>-->
-			<!--<type>jar</type>-->
-		<!--</dependency>-->
 
 
     </dependencies>

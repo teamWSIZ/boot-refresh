@@ -18,9 +18,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-@RestController
-@CrossOrigin
-@RequestMapping(value = "/questions")
+//@RestController
+//@CrossOrigin
+//@RequestMapping(value = "/questions")
 @Slf4j
 public class QuestionController {
     @Autowired

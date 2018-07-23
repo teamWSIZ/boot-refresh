@@ -1,0 +1,8 @@
+- best way to use it will be with JDK9+
+- so far cleanest install is by using undertow instead of tomcat in spring 1.5.X (1exclusion,1inclusion in pom)
+- requires https; configured boot https + tomcat>undertow + UndertowEmbeddedServletContainerFactory in AppConfig.java
+  is enough (dont need instrumentation (javaagent) with -X on launching app (some use it, via jetty-alpn-agent-2.0.6.jar); not needed
+
+- in reality it is HTTP/2 + ALPN (application-layer protocol negotiation)
+- opens streams; multiplexing etc (many requests on same connection; compression etc)
+- verification so far: browser plugins; plugin for chrome (http2 and SPDY indicator is very detailed)

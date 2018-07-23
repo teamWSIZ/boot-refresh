@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
-@RestController
-@CrossOrigin
-@RequestMapping(value = "/exam")
+//@RestController
+//@CrossOrigin
+//@RequestMapping(value = "/exam")
 @Slf4j
 public class TestController {
 

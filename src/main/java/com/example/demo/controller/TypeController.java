@@ -16,9 +16,9 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
-@RestController
-@CrossOrigin
-@RequestMapping(value = "/qtypes")
+//@RestController
+//@CrossOrigin
+//@RequestMapping(value = "/qtypes")
 @Slf4j
 public class TypeController {
     @Autowired
